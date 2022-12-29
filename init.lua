@@ -1,4 +1,5 @@
 local s = core.get_mod_storage()
+local F = core.formspec_escape
 local delay = {}
 local selected = {}
 local reportlist = {}
@@ -17,8 +18,8 @@ local staff_fs = function(name, text)
 	reportlist[name] = list
 	local fs = "size[16,10]" ..
 		"label[0.2,0.1;List of reports & suggestions]" ..
-		"textlist[0.2,0.5;5.2,8.5;reports;"..table.concat(list,",").."]" ..
-		"textarea[5.8,0.2;10.2,11;;"..(list[selected[name]] or "")..";"..(text or "").."]" ..
+		"textlist[0.2,0.5;5.2,8.5;reports;"..F(table.concat(list,",")).."]" ..
+		"textarea[5.8,0.2;10.2,11;;"..F((list[selected[name]] or ""))..";"..(text or "").."]" ..
 		"button[0.2,9;1.5,1;open;Open]" ..
 		"button[1.7,9;1.5,1;delete;Delete]" ..
 		"button[4.1,9;1.5,1;sendnew;Send new]"
