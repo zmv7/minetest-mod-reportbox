@@ -103,5 +103,6 @@ core.register_node("reportbox:reportbox",{
   tiles = {"reportbox.png","reportbox.png","reportbox.png","reportbox.png","reportbox.png","reportbox_front.png"},
   paramtype2 = "facedir",
   groups = {unbreakable=1},
+  light_source = 14,
   on_rightclick = on_rclick,
 })
