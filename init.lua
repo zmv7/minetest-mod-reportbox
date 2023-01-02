@@ -6,6 +6,16 @@ local reportlist = {}
 
 core.register_privilege("reportbox_staff",{give_to_singleplayer=false})
 
+purge_reportbox = function()
+	local s_table = s and s:to_table() and s:to_table().fields
+	local list = {}
+	for title,content in pairs(s_table) do
+		if type(title) == "string" then
+			s:set_string(title,"")
+		end
+	end
+end
+
 local staff_fs = function(name, text)
 	local s_table = s and s:to_table() and s:to_table().fields
 	local list = {}
@@ -14,7 +24,7 @@ local staff_fs = function(name, text)
 			table.insert(list,title)
 		end
 	end
-	table.sort(list)
+	--table.sort(list)
 	reportlist[name] = list
 	local fs = "size[16,10]" ..
 		"label[0.2,0.1;List of reports & suggestions]" ..
