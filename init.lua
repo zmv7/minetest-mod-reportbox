@@ -11,7 +11,7 @@ local staff_fs = function(name, text)
 	local list = {}
 	for title,content in pairs(s_table) do
 		if title and title ~= "" then
-			table.insert(list,F(title))
+			table.insert(list,title)
 		end
 	end
 	table.sort(list)
@@ -19,7 +19,7 @@ local staff_fs = function(name, text)
 	local fs = "size[16,10]" ..
 		"label[0.2,0.1;List of reports & suggestions]" ..
 		"textlist[0.2,0.5;5.2,8.5;reports;"..table.concat(list,",").."]" ..
-		"textarea[5.8,0.2;10.2,11;;"..F((list[selected[name]] or ""))..";"..(text or "").."]" ..
+		"textarea[5.8,0.2;10.2,11;;"..(list[selected[name]] or "")..";"..(text or "").."]" ..
 		"button[0.2,9;1.5,1;open;Open]" ..
 		"button[1.7,9;1.5,1;delete;Delete]" ..
 		"button[4.1,9;1.5,1;sendnew;Send new]"
@@ -64,7 +64,7 @@ core.register_on_player_receive_fields(function(player, formname, fields)
 				return
 			end
 			local date = os.date()
-			s:set_string(date.." "..name.." - '"..fields.title.."'",fields.text)
+			s:set_string(date.." "..name.." - '"..F(fields.title).."'",F(fields.text))
 			if not core.check_player_privs(name,{reportbox_staff=true}) then
 				delay[name] = true
 				core.after(3600, function()
