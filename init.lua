@@ -24,7 +24,7 @@ local staff_fs = function(name, text)
 			table.insert(list,title)
 		end
 	end
-	--table.sort(list)
+	table.sort(list)
 	reportlist[name] = list
 	local fs = "size[16,10]" ..
 		"label[0.2,0.1;List of reports & suggestions]" ..
