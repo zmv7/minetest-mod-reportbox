@@ -28,8 +28,9 @@ local staff_fs = function(name, text)
 	reportlist[name] = list
 	local fs = "size[16,10]" ..
 		"label[0.2,0.1;List of reports & suggestions]" ..
+		"box[5.5,0.2;10,9.6;#000]" ..
 		"textlist[0.2,0.5;5.2,8.5;reports;"..table.concat(list,",").."]" ..
-		"textarea[5.8,0.2;10.2,11;;"..(list[selected[name]] or "")..";"..(text or "").."]" ..
+		"textarea[5.8,0.2;10.2,11.2;;"..(list[selected[name]] or "")..";"..(text or "").."]" ..
 		"button[0.2,9;1.5,1;open;Open]" ..
 		"button[1.7,9;1.5,1;delete;Delete]" ..
 		"button[4.1,9;1.5,1;sendnew;Send new]"
